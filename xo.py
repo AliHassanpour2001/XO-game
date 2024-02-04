@@ -1,8 +1,8 @@
 #import needed libraries
 import numpy as np
 
-#check for win
-def is_going(l) :
+#orib for win
+def win_check(l) :
     for i in range(3) :
         o1 = []
         o2 = []
@@ -10,14 +10,14 @@ def is_going(l) :
             return "x win"
         elif list(l[i]) == 3*["O"] :
             return "O win"
-        check = []
+        orib = []
         for j in range(3) :
             o1.append(l[j,j])
             o2.append(l[j,2-j])
-            check.append(l[i,j])
-        if check == 3*["X"] :
+            orib.append(l[j,i])
+        if orib == 3*["X"] :
             return "X win"
-        elif check == 3*["O"] :
+        elif orib == 3*["O"] :
             return "O win"
         elif o1 == 3*["X"] or o2 == 3*["X"] :
             return "X win"
@@ -28,7 +28,7 @@ def is_going(l) :
 
 #game function
 def xo(l, p1, n1, n2, ind=9) :
-    while is_going(l) == 1 :
+    while win_check(l) == 1 :
         if p1 == "X" :
             pos1 = list(map(int,input(f"{n1} please enter your position(point of (0,0) is in left corer) : ").split()))
             if l[pos1[0], pos1[1]] == "-" :
@@ -36,8 +36,8 @@ def xo(l, p1, n1, n2, ind=9) :
                 print(l)
                 print(61*"-")
                 ind -= 1
-                if is_going(l) != 1 :
-                    return is_going(l)
+                if win_check(l) != 1 :
+                    return win_check(l)
                 elif ind == 0 :
                     return "play is drow"
             else :
@@ -49,8 +49,8 @@ def xo(l, p1, n1, n2, ind=9) :
                         print(l)
                         print(61*"-")
                         ind -= 1
-                        if is_going(l) != 1 :
-                            return is_going(l)
+                        if win_check(l) != 1 :
+                            return win_check(l)
                         elif ind == 0 :
                             return "play is drow"
                         break
@@ -60,8 +60,8 @@ def xo(l, p1, n1, n2, ind=9) :
                 print(l)
                 print(61*"-")
                 ind -= 1
-                if is_going(l) != 1 :
-                    return is_going(l)
+                if win_check(l) != 1 :
+                    return win_check(l)
                 elif ind == 0 :
                     return "play is drow"
             else :
@@ -73,9 +73,9 @@ def xo(l, p1, n1, n2, ind=9) :
                         print(l)
                         print(71*"-")
                         ind -= 1
-                        if is_going(l) != 1 :
+                        if win_check(l) != 1 :
                             print(61*"-")
-                            return is_going(l)
+                            return win_check(l)
                         elif ind == 0 :
                             return "play is drow"
                         break
@@ -86,8 +86,8 @@ def xo(l, p1, n1, n2, ind=9) :
                 print(l)
                 print(61*"-")
                 ind -= 1
-                if is_going(l) != 1 :
-                    return is_going(l)
+                if win_check(l) != 1 :
+                    return win_check(l)
                 elif ind == 0 :
                     return "play is drow"
             else :
@@ -99,8 +99,8 @@ def xo(l, p1, n1, n2, ind=9) :
                         print(l)
                         print(61*"-")
                         ind -= 1
-                        if is_going(l) != 1 :
-                            return is_going(l)
+                        if win_check(l) != 1 :
+                            return win_check(l)
                         elif ind == 0 :
                             return "play is drow"
                         break
@@ -110,8 +110,8 @@ def xo(l, p1, n1, n2, ind=9) :
                 print(l)
                 print(61*"-")
                 ind -= 1
-                if is_going(l) != 1 :
-                    return is_going(l)
+                if win_check(l) != 1 :
+                    return win_check(l)
                 elif ind == 0 :
                     return "play is drow"
             else :
@@ -123,14 +123,14 @@ def xo(l, p1, n1, n2, ind=9) :
                         print(l)
                         print(61*"-")
                         ind -= 1
-                        if is_going(l) != 1 :
-                            return is_going(l)
+                        if win_check(l) != 1 :
+                            return win_check(l)
                         elif ind == 0 :
                             return "play is drow"
                         break
 
 
-#main function for give inputs and run code
+# main function for give inputs and run code
 def main() :
     ground = np.array(3*[3*["-"]]).reshape(3,3)
     n1 = input("please enter a name for player1 : ")
